@@ -26,6 +26,11 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+
+## Informations
+
+ERD.drawio
+ERD-cheat-sheet.png
 ## Installation
 
 ```bash
