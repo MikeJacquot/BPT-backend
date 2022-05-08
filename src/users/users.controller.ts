@@ -12,8 +12,18 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
+  @Get()
+  getAll() {
+    return this.usersService.findAll();
+  }
+
   @Get(':id')
   show(@Param('id') id: string) {
     return this.usersService.showById(id);
+  }
+
+  @Get('email/:email')
+  getByEmail(@Param('email') email: string) {
+    return this.usersService.findByEmail(email);
   }
 }
