@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import * as connectionOptions from './ormconfig';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -15,6 +16,7 @@ import { UsersModule } from './users/users.module';
     }),
     TypeOrmModule.forRoot(connectionOptions),
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
