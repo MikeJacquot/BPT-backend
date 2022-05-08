@@ -14,7 +14,7 @@ import { JwtModule } from '@nestjs/jwt';
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async () => ({
-        secret: "aldoriurens5a56z21e636sd8>]zaze",
+        secret: 'aldoriurens5a56z21e636sd8>]zaze',
       }),
       inject: [ConfigService],
     }),

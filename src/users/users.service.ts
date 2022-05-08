@@ -5,7 +5,6 @@ import { User } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
-    
   async create(createUserDto: CreateUserDto) {
     const user = User.create(createUserDto);
     await user.save();
@@ -13,15 +12,15 @@ export class UsersService {
     delete user.password;
     return user;
   }
-
-  async showById(id: number): Promise<User> {
+  // return user without password
+  async showById(id: string): Promise<User> {
     const user = await this.findById(id);
 
     delete user.password;
     return user;
   }
 
-  async findById(id: number) {
+  async findById(id: string) {
     return await User.findOne(id);
   }
 
