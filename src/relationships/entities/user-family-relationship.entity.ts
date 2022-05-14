@@ -29,6 +29,7 @@ const familyRelationshipsList = [
  * A relation entity used to define the relation in this module
  * between a User and a Family adding the relationship between these two
  */
+
 export class UserFamilyRelationship extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
