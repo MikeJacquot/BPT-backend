@@ -9,6 +9,7 @@ import * as connectionOptions from './ormconfig';
 import { UsersModule } from './users/users.module';
 import { RelationshipsModule } from './relationships/relationships.module';
 import { BabiesModule } from './babies/babies.module';
+import { BiometricsModule } from './biometrics/biometrics.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { BabiesModule } from './babies/babies.module';
     FamiliesModule,
     RelationshipsModule,
     BabiesModule,
+    BiometricsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
