@@ -8,6 +8,7 @@ import { FamiliesModule } from './families/families.module';
 import * as connectionOptions from './ormconfig';
 import { UsersModule } from './users/users.module';
 import { RelationshipsModule } from './relationships/relationships.module';
+import { BabiesModule } from './babies/babies.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { RelationshipsModule } from './relationships/relationships.module';
     AuthModule,
     FamiliesModule,
     RelationshipsModule,
+    BabiesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
