@@ -3,9 +3,11 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { FamiliesModule } from './families/families.module';
 import * as connectionOptions from './ormconfig';
 import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
+import { RelationshipsModule } from './relationships/relationships.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { AuthModule } from './auth/auth.module';
     TypeOrmModule.forRoot(connectionOptions),
     UsersModule,
     AuthModule,
+    FamiliesModule,
+    RelationshipsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
