@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 
-@Entity({ name: 'users' })
+@Entity({ name: 'user' })
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -18,13 +18,13 @@ export class User extends BaseEntity {
   email: string;
 
   @Column()
+  password: string;
+
+  @Column()
   firstName: string;
 
   @Column()
   lastName: string;
-
-  @Column()
-  password: string;
 
   @Column()
   @CreateDateColumn()
