@@ -25,7 +25,7 @@ export class FamiliesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFamilyDto: CreateUpdateFamilyDto) {
+  update(@Param('id') id: string, @Body() updateFamilyDto: Partial<CreateUpdateFamilyDto>) {
     return this.familiesService.update(id, updateFamilyDto);
   }
 
