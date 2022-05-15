@@ -19,7 +19,7 @@ export class FamiliesService {
     return await Family.findOne(id);
   }
 
-  async update(id: string, updateFamilyDto: CreateUpdateFamilyDto) {
+  async update(id: string, updateFamilyDto: Partial<CreateUpdateFamilyDto>) {
     return Family.update(id, updateFamilyDto);
   }
 

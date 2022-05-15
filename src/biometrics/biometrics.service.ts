@@ -17,7 +17,7 @@ export class BiometricsService {
     return await Biometric.findOne(id);
   }
 
-  async update(id: string, updateBiometricDto: CreateUpdateBiometricDto) {
+  async update(id: string, updateBiometricDto: Partial<CreateUpdateBiometricDto>) {
     return await Biometric.update(id, updateBiometricDto);
   }
 

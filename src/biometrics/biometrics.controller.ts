@@ -22,7 +22,7 @@ export class BiometricsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBiometricDto: CreateUpdateBiometricDto) {
+  update(@Param('id') id: string, @Body() updateBiometricDto: Partial<CreateUpdateBiometricDto>) {
     return this.biometricsService.update(id, updateBiometricDto);
   }
 
