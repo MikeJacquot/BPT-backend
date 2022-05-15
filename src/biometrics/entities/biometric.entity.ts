@@ -23,7 +23,7 @@ export class Biometric extends BaseEntity {
         type: 'date',
         default: null,
     })
-    date: number;
+    date: Date;
 
     @ManyToOne(() => Baby, {
         nullable: true,
