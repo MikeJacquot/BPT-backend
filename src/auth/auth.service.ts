@@ -1,15 +1,14 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UsersService } from 'src/users/services/users.service';
-import * as bcrypt from 'bcryptjs'
-import { User } from '../users/entities/user.entity';
 import * as bcrypt from 'bcryptjs';
-
-import { AuthLoginDto } from './dto/auth-login.dto';
-import { AuthenticationUpdatePasswordException } from './exceptions/authentication-update-password.exception';
 import { sign } from 'jsonwebtoken';
-import { JwtUserPayload } from './model/jwt-user-payload.model';
+import { UsersService } from 'src/users/services/users.service';
+import { User } from '../users/entities/user.entity';
+import { AuthLoginDto } from './dto/auth-login.dto';
 import { SignInResponseDto } from './dto/sign-in-response.dto';
+import { AuthenticationUpdatePasswordException } from './exceptions/authentication-update-password.exception';
+import { JwtUserPayload } from './model/jwt-user-payload.model';
+
 
 @Injectable()
 export class AuthService {
@@ -47,11 +46,11 @@ export class AuthService {
   }
 
   async updatePassword(userId: string, oldPassword: string, newPassword: string): Promise<void> {
-    const user: User = await this.usersService.findByEmail(userId);
+    const user: User = await this.usersService.findById(userId);
     if (!(await bcrypt.compare(oldPassword, user.password))) {
       throw new AuthenticationUpdatePasswordException('Your actual password is incorrect');
     }
     user.password = await bcrypt.hash(newPassword, 8);
-    await this.usersService.update(userId, user);
+    await User.save(user);
   }
 }
