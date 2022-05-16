@@ -17,12 +17,6 @@ export class AuthController {
     return this.authService.login(authLoginDto);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Get()
-  async test() {
-    return 'Success!';
-  }
-
   @Put('update-password')
     @UseGuards(JwtAuthGuard)
     @HttpCode(200)

@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from 'src/users/services/users.service';
-
+import * as bcrypt from 'bcryptjs'
 import { User } from '../users/entities/user.entity';
 import * as bcrypt from 'bcryptjs';
 
@@ -38,9 +38,6 @@ export class AuthService {
 
   async validateUser(email: string, pass: string): Promise<Partial<User>> {
     const user: User = await this.usersService.findByEmail(email);
-    console.log(user);
-    console.log(pass);
-    console.log(user.password)
     if (user != null && await bcrypt.compare(pass, user.password)) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...result } = user;
