@@ -1,4 +1,4 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { User } from '../entities/user.entity';
@@ -10,30 +10,22 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto) {
     const userToCreate = User.create(createUserDto);
-    const users = await this.findAll();
+    const existingUser = await this.findByEmail(createUserDto.email);
+    if(existingUser){
+      throw new HttpException('User already exists with this email', 409);
+    }
+    User.save(userToCreate);
+    return {email: userToCreate.email};
 
-    // check if the email is already used, if so, throw an exception instead of an 500 error
-    users.forEach((user) => {
-      if (user.email === userToCreate.email) {
-        throw new ConflictException({
-          type: 'IsAlreadyExistingWithThisEmail',
-          message: `A user is already existing with this ${user.email}`,
-        });
-      } else {
-        userToCreate.save();
-        delete userToCreate.password;
-        return userToCreate;
-      }
-    });
   }
 
   // return user's list without passwords
-  async findAll(): Promise<User[]> {
+  async findAll(): Promise<Partial<User[]>> {
     const users = await User.find();
-    users.forEach((user) => {
+    return users.map((user) => {
       delete user.password;
+      return user
     });
-    return users;
   }
 
   // return user without password
