@@ -4,7 +4,6 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
   app.useGlobalPipes(new ValidationPipe({
     /**
      * The option 'transform: true' allow dto fields transformations.
@@ -16,8 +15,8 @@ async function bootstrap() {
     transform: true
 }));
 
-app.setGlobalPrefix('api');
-
+  app.setGlobalPrefix('api');
+  
   await app.listen(3000);
 }
 bootstrap();
