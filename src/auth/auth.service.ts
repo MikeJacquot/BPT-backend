@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
+import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UsersService } from 'src/users/services/users.service';
 import { User } from '../users/entities/user.entity';
 import { AuthLoginDto } from './dto/auth-login.dto';
@@ -52,5 +53,9 @@ export class AuthService {
     }
     user.password = await bcrypt.hash(newPassword, 8);
     await User.save(user);
+  }
+
+  async signUp(user: CreateUserDto) {
+    await this.usersService.create(user);
   }
 }

@@ -11,9 +11,9 @@ export class BabiesController {
     return this.babiesService.create(createBabyDto);
   }
 
-  @Get('list')
-  findAll() {
-    return this.babiesService.findAll();
+  @Get(':id/list')
+  findAllByFamilyId(@Param('id') id: string) {
+    return this.babiesService.findAll(id);
   }
 
   @Get(':id')

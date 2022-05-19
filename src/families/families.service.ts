@@ -11,8 +11,9 @@ export class FamiliesService {
 
   }
 
-  async findAll() {
-    return await Family.find();
+  async findAllByUserId(id: string) {
+
+    return await Family.find({where: {user: id}});
   }
 
   async findOne(id: string) {
@@ -26,4 +27,5 @@ export class FamiliesService {
   async delete(id: string) {
     return await Family.delete(id); 
   }
+
 }
