@@ -15,9 +15,9 @@ export class FamiliesController {
   }
 
 
-  @Get('list')
-  findAll() {
-    return this.familiesService.findAll();
+  @Get('list/:id')
+  findAllByUserId(@Param('id') id: string) {
+    return this.familiesService.findAllByUserId(id);
   }
 
   @Get(':id')

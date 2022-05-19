@@ -1,4 +1,5 @@
 import { Body, Controller, Get, HttpCode, Post, Put, UseGuards } from '@nestjs/common';
+import { CreateUserDto } from 'src/users/dto/create-user.dto';
 
 import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
@@ -15,6 +16,11 @@ export class AuthController {
   @Post('sign-in')
   async login(@Body() authLoginDto: AuthLoginDto) {
     return this.authService.login(authLoginDto);
+  }
+
+  @Post('sign-up')
+  async signUp(@Body() user: CreateUserDto) {
+    return this.authService.signUp(user);
   }
 
   @Put('update-password')

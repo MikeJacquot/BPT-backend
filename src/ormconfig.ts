@@ -2,10 +2,9 @@ import { ConnectionOptions } from 'typeorm';
 import { Baby } from './babies/entities/baby.entity';
 import { Biometric } from './biometrics/entities/biometric.entity';
 import { Family } from './families/entities/family.entity';
-import { UserFamilyRelationship } from './relationships/entities/user-family-relationship.entity';
 import { User } from './users/entities/user.entity';
 
-const entities = [User, Family, UserFamilyRelationship, Baby, Biometric];
+const entities = [User, Family, Baby, Biometric];
 
 const connectionOptions: ConnectionOptions = {
   type: 'mariadb',

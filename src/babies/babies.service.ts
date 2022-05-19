@@ -10,8 +10,10 @@ export class BabiesService {
     return await Baby.save(babyToCreate);
   }
 
-  async findAll() {
-    return Baby.find();
+  async findAll(familyId: string) {
+    return await Baby.find({
+      where: {family: familyId}
+    });
   }
 
   async findOne(id: string) {
