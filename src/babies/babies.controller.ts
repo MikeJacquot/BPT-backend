@@ -11,7 +11,7 @@ export class BabiesController {
     return this.babiesService.create(createBabyDto);
   }
 
-  @Get()
+  @Get('list')
   findAll() {
     return this.babiesService.findAll();
   }

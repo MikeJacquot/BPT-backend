@@ -14,7 +14,8 @@ export class FamiliesController {
     return this.familiesService.create(createFamilyDto);
   }
 
-  @Get()
+
+  @Get('list')
   findAll() {
     return this.familiesService.findAll();
   }
