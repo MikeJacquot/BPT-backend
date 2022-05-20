@@ -5,8 +5,9 @@ import { Baby } from './entities/baby.entity';
 @Injectable()
 export class BabiesService {
   
-  async create(createBabyDto: CreateUpdateBabyDto) {
+  async create(familyId: string, createBabyDto: CreateUpdateBabyDto) {
     const babyToCreate = Baby.create(createBabyDto);
+    babyToCreate.family.id = familyId;
     return await Baby.save(babyToCreate);
   }
 
