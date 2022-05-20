@@ -1,5 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { FamiliesService } from 'src/families/families.service';
+import { DeleteResult } from 'typeorm';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { User } from '../entities/user.entity';
@@ -34,11 +35,9 @@ export class UsersService {
   }
 
   // return user without password
-  async showById(id: string): Promise<User> {
+  async showById(id: string): Promise<Partial<User>> {
     const user = await User.findOne(id);
-
-    delete user.password;
-    return user;
+    return {email: user.email, firstName: user.firstName, lastName: user.lastName};
   }
 
   async findById(id: string) {
@@ -55,5 +54,9 @@ export class UsersService {
 
   async update(id: string, updateUserDto: Partial<UpdateUserDto>) {
     return User.update(id, updateUserDto);
+  }
+
+  deleteOneById(id: string): Promise<DeleteResult> {
+    return User.delete(id);
   }
 }
