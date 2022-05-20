@@ -1,4 +1,5 @@
 import { IsDateString, IsString, MaxLength } from 'class-validator';
+import { Family } from 'src/families/entities/family.entity';
 
 export class CreateUpdateBabyDto {
 
@@ -16,5 +17,7 @@ export class CreateUpdateBabyDto {
   @IsString()
   @MaxLength(255)
   birthLocation: string;
+
+  family: Family;
 }
 
