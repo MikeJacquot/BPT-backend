@@ -6,7 +6,7 @@ import { CreateUpdateBabyDto } from './dto/create-update-baby.dto';
 export class BabiesController {
   constructor(private readonly babiesService: BabiesService) {}
 
-  @Post('create/:familyId')
+  @Post(':familyId/create')
   create(@Param(':familyId') familyId: string,
   @Body() createBabyDto: CreateUpdateBabyDto) {
     return this.babiesService.create(familyId, createBabyDto);
