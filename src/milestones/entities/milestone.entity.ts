@@ -1,5 +1,7 @@
-import { BaseEntity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { AttachedFile } from 'src/attached-files/entities/attached-file.entity';
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity({name: 'milestone'})
 export class Milestone extends BaseEntity{
 
     @PrimaryGeneratedColumn('uuid')
@@ -28,4 +30,7 @@ export class Milestone extends BaseEntity{
         default: null,
     })
     date: Date;
+
+    @OneToMany(() => AttachedFile, attachedFile => attachedFile.milestone)
+    attachedFiles: AttachedFile[];
 }

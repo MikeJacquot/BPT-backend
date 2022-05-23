@@ -6,14 +6,15 @@ import { CreateUpdateBiometricDto } from './dto/create-update-biometric.dto';
 export class BiometricsController {
   constructor(private readonly biometricsService: BiometricsService) {}
 
-  @Post()
-  create(@Body() createBiometricDto: CreateUpdateBiometricDto) {
-    return this.biometricsService.create(createBiometricDto);
+  @Post(':id')
+  addOneToBaby(@Param() id: string,
+  @Body() createBiometricDto: CreateUpdateBiometricDto) {
+    return this.biometricsService.addOneToBaby(id, createBiometricDto);
   }
 
-  @Get()
-  findAll() {
-    return this.biometricsService.findAll();
+  @Get(':babyId/list')
+  findAll(@Param('babyId') babyId: string) {
+    return this.biometricsService.findAllByBabyId(babyId);
   }
 
   @Get(':id')
