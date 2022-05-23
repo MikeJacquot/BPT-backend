@@ -1,16 +1,19 @@
 import { Injectable } from '@nestjs/common';
+import { Baby } from 'src/babies/entities/baby.entity';
 import { CreateUpdateBiometricDto } from './dto/create-update-biometric.dto';
 import { Biometric } from './entities/biometric.entity';
 
 @Injectable()
 export class BiometricsService {
-  async create(createBiometricDto: CreateUpdateBiometricDto) {
-    const toSave = Biometric.create(createBiometricDto);
-    return await Biometric.save(toSave);
+  async addOneToBaby(babyId: string, createBiometricDto: CreateUpdateBiometricDto) {
+    const biometricToCreate = Biometric.create(createBiometricDto);
+    const baby = await Baby.findOne(babyId);
+    biometricToCreate.baby = baby;
+    return await Biometric.save(biometricToCreate);
   }
 
-  async findAll() {
-    return await Biometric.find();
+  async findAllByBabyId(babyId: string) {
+    return await Biometric.find({where: {baby: {id: babyId}}, order: {date: 'DESC'}});
   }
 
   async findOne(id: string) {

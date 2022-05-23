@@ -31,7 +31,7 @@ export class Family extends BaseEntity {
   })
   familyRelationShip: FamilyRelationshipType;
 
-  @ManyToOne(() => User, user => user.id )
+  @ManyToOne(() => User, user => user.id, {onDelete: 'CASCADE'})
   user: User
 
 }

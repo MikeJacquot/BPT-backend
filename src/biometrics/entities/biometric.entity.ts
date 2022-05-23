@@ -1,5 +1,5 @@
 import { Baby } from 'src/babies/entities/baby.entity';
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({name: 'biometric'})
 export class Biometric extends BaseEntity {
@@ -19,17 +19,10 @@ export class Biometric extends BaseEntity {
     })
     weight: number;
 
-    @Column({
-        type: 'date',
-        default: null,
-    })
+    @Column()
     date: Date;
 
-    @ManyToOne(() => Baby, {
-        nullable: true,
-        cascade: true,
-        onDelete: 'CASCADE',
-    })
+    @ManyToOne(() => Baby, baby => baby.id )
     baby: Baby;
 }
 

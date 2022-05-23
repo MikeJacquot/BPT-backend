@@ -11,6 +11,7 @@ import { MedicalAppointmentsModule } from './medical-appointments/medical-appoin
 import { MilestonesModule } from './milestones/milestones.module';
 import * as connectionOptions from './ormconfig';
 import { UsersModule } from './users/users.module';
+import { AttachedFilesModule } from './attached-files/attached-files.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { UsersModule } from './users/users.module';
     BiometricsModule,
     MedicalAppointmentsModule,
     MilestonesModule,
+    AttachedFilesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -8,11 +8,9 @@ export class FamiliesService {
   async create(createFamilyDto: CreateUpdateFamilyDto) {
     const familyToCreate = Family.create(createFamilyDto);
     return await familyToCreate.save();
-
   }
 
   async findAllByUserId(id: string) {
-
     return await Family.find({where: {user: id}});
   }
 

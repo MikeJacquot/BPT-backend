@@ -1,5 +1,7 @@
-import { BaseEntity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { AttachedFile } from 'src/attached-files/entities/attached-file.entity';
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity({name: 'medical-appointment'})
 export class MedicalAppointment extends BaseEntity{
 
     @PrimaryGeneratedColumn('uuid')
@@ -28,5 +30,8 @@ export class MedicalAppointment extends BaseEntity{
         default: null,
     })
     observations: string;
+
+    @OneToMany(() => AttachedFile, attachedFile => attachedFile.medicalAppointment)
+    attachedFiles: AttachedFile[];
 
 }
