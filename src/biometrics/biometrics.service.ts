@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Baby } from 'src/babies/entities/baby.entity';
+import { Baby } from '../babies/entities/baby.entity';
+
 import { CreateUpdateBiometricDto } from './dto/create-update-biometric.dto';
 import { Biometric } from './entities/biometric.entity';
 

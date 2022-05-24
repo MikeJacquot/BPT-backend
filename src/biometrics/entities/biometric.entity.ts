@@ -1,5 +1,6 @@
-import { Baby } from 'src/babies/entities/baby.entity';
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Baby } from '../../babies/entities/baby.entity';
 
 @Entity({name: 'biometric'})
 export class Biometric extends BaseEntity {

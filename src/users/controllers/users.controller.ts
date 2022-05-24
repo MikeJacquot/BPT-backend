@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param, Patch, Delete, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/jwt/jwt-auth.guard';
 import { DeleteResult } from 'typeorm';
+import { JwtAuthGuard } from '../../auth/jwt/jwt-auth.guard';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { UsersService } from '../services/users.service';
@@ -16,6 +16,11 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
+  @Post('with-password')
+  createWithPaswword(@Body() createUserDto: CreateUserDto) {
+    return this.usersService.createWithPaswwordReturned(createUserDto);
+  }
+
   @Get('list')
   getAll() {
     return this.usersService.findAll();
@@ -24,6 +29,11 @@ export class UsersController {
   @Get(':id')
   show(@Param('id') id: string) {
     return this.usersService.showById(id);
+  }
+
+  @Get(':id/with-password')
+  showWithPaswword(@Param('id') id: string) {
+    return this.usersService.showByIdwithPassword(id);
   }
 
   @Get('email/:email')

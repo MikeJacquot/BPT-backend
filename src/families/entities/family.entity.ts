@@ -1,6 +1,6 @@
-import { userInfo } from 'os';
-import { User } from 'src/users/entities/user.entity';
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from '../../users/entities/user.entity';
 
 export type FamilyRelationshipType =
   | 'parent'

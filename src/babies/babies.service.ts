@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Family } from 'src/families/entities/family.entity';
+import { Family } from '../families/entities/family.entity';
 import { CreateUpdateBabyDto } from './dto/create-update-baby.dto';
 import { Baby } from './entities/baby.entity';
 

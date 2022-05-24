@@ -1,6 +1,7 @@
-import { MedicalAppointment } from 'src/medical-appointments/entities/medical-appointment.entity';
-import { Milestone } from 'src/milestones/entities/milestone.entity';
+
 import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { MedicalAppointment } from '../../medical-appointments/entities/medical-appointment.entity';
+import { Milestone } from '../../milestones/entities/milestone.entity';
 
 @Entity({name: 'attached-file'})
 export class AttachedFile extends BaseEntity {

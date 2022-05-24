@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { MedicalAppointment } from 'src/medical-appointments/entities/medical-appointment.entity';
-import { Milestone } from 'src/milestones/entities/milestone.entity';
+import { MedicalAppointment } from '../medical-appointments/entities/medical-appointment.entity';
+import { Milestone } from '../milestones/entities/milestone.entity';
+
 import { CreateUpdateAttachedFileDto } from './dto/create-update-attached-file.dto';
 import { AttachedFile } from './entities/attached-file.entity';
 

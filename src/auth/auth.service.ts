@@ -2,13 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
-import { UsersService } from 'src/users/services/users.service';
+import { CreateUserDto } from '../users/dto/create-user.dto';
 import { User } from '../users/entities/user.entity';
+import { UsersService } from '../users/services/users.service';
 import { AuthLoginDto } from './dto/auth-login.dto';
 import { SignInResponseDto } from './dto/sign-in-response.dto';
 import { AuthenticationUpdatePasswordException } from './exceptions/authentication-update-password.exception';
 import { JwtUserPayload } from './model/jwt-user-payload.model';
+
 
 
 @Injectable()
@@ -38,6 +39,7 @@ export class AuthService {
 
   async validateUser(email: string, pass: string): Promise<Partial<User>> {
     const user: User = await this.usersService.findByEmail(email);
+
     if (user != null && await bcrypt.compare(pass, user.password)) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...result } = user;
@@ -51,11 +53,11 @@ export class AuthService {
     if (!(await bcrypt.compare(oldPassword, user.password))) {
       throw new AuthenticationUpdatePasswordException('Your actual password is incorrect');
     }
-    user.password = await bcrypt.hash(newPassword, 8);
+    user.password = await bcrypt.hash(newPassword, 10);
     await User.save(user);
   }
 
   async signUp(user: CreateUserDto) {
-    await this.usersService.create(user);
+    return await this.usersService.create(user);
   }
 }

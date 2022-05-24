@@ -28,7 +28,6 @@
 
 
 ## Informations
-
 ERD.drawio
 ERD-cheat-sheet.png
 ## Installation
@@ -46,22 +45,23 @@ $ npm run start
 # watch mode
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
-```
 
 ## Test
 
 ```bash
-# unit tests
-$ npm run test
-
 # e2e tests
 $ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
-```
+## Project vision
+
+This is a draft of my project i planned to add many more features and testing
+I have a full time job aside which takes me a lot of time, then i'll continue to work on it and implements many things like:
+
+- users members linked to teh current user to only see which ones are in your inner circle
+- file uploads to add some pictures or even prescriptions (for medical appointments)
+- some UI/UX fixes
+- an API documentation using swagger
+
 
 ## Support
 
@@ -76,3 +76,5 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+

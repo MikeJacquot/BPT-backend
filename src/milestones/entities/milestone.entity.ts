@@ -1,5 +1,6 @@
-import { AttachedFile } from 'src/attached-files/entities/attached-file.entity';
+
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { AttachedFile } from '../../attached-files/entities/attached-file.entity';
 
 @Entity({name: 'milestone'})
 export class Milestone extends BaseEntity{

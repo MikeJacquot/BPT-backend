@@ -1,5 +1,6 @@
 import { IsDateString, IsString, MaxLength } from 'class-validator';
-import { Family } from 'src/families/entities/family.entity';
+import { Family } from '../../families/entities/family.entity';
+
 
 export class CreateUpdateBabyDto {
 

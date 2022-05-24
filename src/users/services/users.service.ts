@@ -1,6 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { FamiliesService } from 'src/families/families.service';
 import { DeleteResult } from 'typeorm';
+import { FamiliesService } from '../../families/families.service';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { User } from '../entities/user.entity';
@@ -20,8 +20,18 @@ export class UsersService {
     if(existingUser){
       throw new HttpException('User already exists with this email', 409);
     }
-    User.save(userToCreate);
+    await User.save(userToCreate);
     return {email: userToCreate.email};
+
+  }
+
+  async createWithPaswwordReturned(createUserDto: CreateUserDto) {
+    const userToCreate = User.create(createUserDto);
+    const existingUser = await this.findByEmail(createUserDto.email);
+    if(existingUser){
+      throw new HttpException('User already exists with this email', 409);
+    }   
+    return await User.save(userToCreate);
 
   }
 
@@ -40,6 +50,11 @@ export class UsersService {
     return {email: user.email, firstName: user.firstName, lastName: user.lastName};
   }
 
+  async showByIdwithPassword(id: string): Promise<Partial<User>> {
+    const user = await User.findOne(id);
+    return user;
+  }
+
   async findById(id: string) {
     return await User.findOne(id);
   }
@@ -53,7 +68,7 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: Partial<UpdateUserDto>) {
-    return User.update(id, updateUserDto);
+    return await User.update(id, updateUserDto);
   }
 
   deleteOneById(id: string): Promise<DeleteResult> {

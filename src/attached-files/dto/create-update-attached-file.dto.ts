@@ -1,5 +1,6 @@
-import { MedicalAppointment } from 'src/medical-appointments/entities/medical-appointment.entity';
-import { Milestone } from 'src/milestones/entities/milestone.entity';
+import { MedicalAppointment } from '../../medical-appointments/entities/medical-appointment.entity';
+import { Milestone } from '../../milestones/entities/milestone.entity';
+
 
 export class CreateUpdateAttachedFileDto {
     id?: string;

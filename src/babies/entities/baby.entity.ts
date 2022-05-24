@@ -1,7 +1,8 @@
-import { Family } from 'src/families/entities/family.entity';
+
 import {
   BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn
 } from 'typeorm';
+import { Family } from '../../families/entities/family.entity';
 
 @Entity({ name: 'baby' })
 export class Baby extends BaseEntity {

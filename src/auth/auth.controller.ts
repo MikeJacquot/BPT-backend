@@ -1,6 +1,6 @@
-import { Body, Controller, Get, HttpCode, Post, Put, UseGuards } from '@nestjs/common';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
-
+import { Body, Controller, HttpCode, Post, Put, UseGuards } from '@nestjs/common';
+import { UpdateResult } from 'typeorm';
+import { CreateUserDto } from '../users/dto/create-user.dto';
 import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { AuthLoginDto } from './dto/auth-login.dto';
@@ -8,6 +8,8 @@ import { PasswordUpdateRequestDto } from './dto/password-update-request.dto';
 import { AuthenticationUpdatePasswordException } from './exceptions/authentication-update-password.exception';
 import { JwtAuthGuard } from './jwt/jwt-auth.guard';
 import { JwtUser } from './model/jwt-user.model';
+
+
 
 @Controller('auth')
 export class AuthController {
