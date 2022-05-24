@@ -35,6 +35,15 @@ ERD-cheat-sheet.png
 ```bash
 $ npm install
 ```
+## Databse config
+
+install mariaDB
+use 'root' as username
+use 'password' as password
+use 'babytracker' as database name
+on 127.0.0.1:3306
+
+I personnaly use HeidiSQL to view my database
 
 ## Running the app
 
